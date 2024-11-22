@@ -14,7 +14,10 @@ button:hover{
     border: 2px solid #646cff;
 }
 
-.guess{
+.guess,
+.secondGuess,
+.thirdGuess,
+.fourthGuess{
     width: 70px;
     height: 70px;
     border-radius: 12px;
@@ -40,41 +43,10 @@ button:hover{
     padding-left: 25%;
 }
 
-.firstGuess{
-    max-width: fit-content;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.secondGuess{
-    max-width: fit-content;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    }
-
-.thirdGuess{
-    max-width: fit-content;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.fourthGuess{
-    max-width: fit-content;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    }
-
-.fifthGuess{
+.firstGuessContainer,
+.secondGuessContainer,
+.thirdGuessContainer,
+.fourthGuessContainer{
     max-width: fit-content;
     display: flex;
     gap: 12px;
