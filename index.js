@@ -4,16 +4,13 @@ const problems = [
     "4/2+3-1=4",  
     "2+3*4-5/1",  
     "5/1+2-3=4",
-    "1+2*x³-4/5",
     "(4/2)+3-1",
-    "2+x²*4-5/1",
-    "(3+x³)*2-5",
     "4/x+5-3=2",
-    "5+4/(x³-3)"
+    "2-3+5-4=2",
 ]
 
 const characters = [
-    "1", "2", "3", "4", "5", "+", "-", "*", "/", "(" , ")", "x" , "x²", "x³", "√", "="
+    "1", "2", "3", "4", "5", "+", "-", "*", "/", "(" , ")", "x" , "√", "="
 ]    
 
 let guesses = [];
@@ -59,20 +56,22 @@ const compare = (tries) => {
         case 1:
             for(let i = 0; i < problem.length; i++){
                 if(problem[i] !== guesses[i]){
-                  console.log('wrong');
-                  rightOrWrong[i] = 'wrong';
-                  document.querySelectorAll('.guess')[i].style.backgroundColor = 'red';
-                  console.log(rightOrWrong);
-                } /*    else if(problem[i].includes == guesses[i]) {
-                    console.log('placement');
-                    rightOrWrong[i] = 'placement';
-                    document.querySelectorAll('.guess')[i].style.backgroundColor = 'yellow';
+                    if(problem.includes(guesses[i])) {
+                        console.log('placement');
+                        rightOrWrong[i] = 'placement';
+                        document.querySelectorAll('.guess')[i].style.backgroundColor = 'orange';
+                        console.log(rightOrWrong);
+                    } else {
+                        console.log('wrong');
+                        rightOrWrong[i] = 'wrong';
+                        document.querySelectorAll('.guess')[i].style.backgroundColor = 'red';
+                        console.log(rightOrWrong);
+                    }
+                } if (problem[i] === guesses[i]) {
+                    console.log('correct');
+                    rightOrWrong[i] = 'correct';
+                    document.querySelectorAll('.guess')[i].style.backgroundColor = 'green';
                     console.log(rightOrWrong);
-                } */else {
-                  console.log('correct');
-                  rightOrWrong[i] = 'correct';
-                  document.querySelectorAll('.guess')[i].style.backgroundColor = 'green';
-                  console.log(rightOrWrong);
                 }
             }
 
@@ -82,21 +81,23 @@ const compare = (tries) => {
         case 2:
             for(let i = 0; i < problem.length; i++){
                 if(problem[i] !== guesses[guessIndex]){
-                  console.log('wrong');
-                  secondRigthOrWrong[i] = 'wrong';
-                  document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'red';
-                  console.log(secondRigthOrWrong);
-                }/* else if(problem[i].includes == guesses[guessIndex]) {
-                    console.log('placement');
-                    rightOrWrong[i] = 'placement';
-                    document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'yellow';
-                    console.log(rightOrWrong);
-                } */ else {
-                  console.log('correct');
-                  secondRigthOrWrong[i] = 'correct';
-                  document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'green';
-                  console.log(secondRigthOrWrong);
-                }
+                    if(problem.includes(guesses[guessIndex]) && document.querySelectorAll('.secondGuess')[i].style.backgroundColor !== 'green') {
+                        console.log('placement');
+                        secondRigthOrWrong[i] = 'placement';
+                        document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'orange';
+                        console.log(secondRigthOrWrong + ' case 2 if working');
+                    } else {
+                        console.log('wrong');
+                        secondRigthOrWrong[i] = 'wrong';
+                        document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'red';
+                        console.log(secondRigthOrWrong);
+                    } 
+                } if (problem[i] === guesses[guessIndex]) {
+                    console.log('correct');
+                    secondRigthOrWrong[i] = 'correct';
+                    document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'green';
+                    console.log(secondRigthOrWrong);
+                } 
                 guessIndex++;
             }
 
@@ -107,16 +108,23 @@ const compare = (tries) => {
         case 3:
             for(let i = 0; i < problem.length ; i++){
                 if(problem[i] !== guesses[guessIndex]){
-                  console.log('wrong');
-                  thirdRightOrWrong[i] = 'wrong';
-                  document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'red';
-                  console.log(thirdRightOrWrong);
-                } else {
-                  console.log('correct');
-                  thirdRightOrWrong[i] = 'correct';
-                  document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'green';
-                  console.log(thirdRightOrWrong);
-                }
+                    if(problem.includes(guesses[guessIndex]) && document.querySelectorAll('.thirdGuess')[i].style.backgroundColor !== 'green') {
+                        console.log('placement');
+                        thirdRightOrWrong[i] = 'placement';
+                        document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'orange';
+                        console.log(thirdRightOrWrong);
+                    } else {
+                        console.log('wrong');
+                        thirdRightOrWrong[i] = 'wrong';
+                        document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'red';
+                        console.log(thirdRightOrWrong);
+                    }
+                } if (problem[i] === guesses[guessIndex]) {
+                    console.log('correct');
+                    thirdRightOrWrong[i] = 'correct';
+                    document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'green';
+                    console.log(thirdRightOrWrong);
+                } 
                 guessIndex++;
             }
 
@@ -127,16 +135,23 @@ const compare = (tries) => {
         case 4:
             for(let i = 0; i < problem.length; i++){
                 if(problem[i] !== guesses[guessIndex]){
-                  console.log('wrong');
-                  fourthRightOrWrong[i] = 'wrong';
-                  document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'red';
-                  console.log(fourthRightOrWrong);
-                } else {
-                  console.log('correct');
-                  fourthRightOrWrong[i] = 'correct';
-                  document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'green';
-                  console.log(fourthRightOrWrong);
-                }
+                    if(problem.includes(guesses[guessIndex]) && document.querySelectorAll('.fourthGuess')[i].style.backgroundColor !== 'green') {
+                        console.log('placement');
+                        fourthRightOrWrong[i] = 'placement';
+                        document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'orange';
+                        console.log(fourthRightOrWrong);
+                    } else {
+                        console.log('wrong');
+                        fourthRightOrWrong[i] = 'wrong';
+                        document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'red';
+                        console.log(fourthRightOrWrong);
+                    }
+                } if (problem[i] === guesses[guessIndex]) {
+                    console.log('correct');
+                    fourthRightOrWrong[i] = 'correct';
+                    document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'green';
+                    console.log(fourthRightOrWrong);
+                } 
                 guessIndex++;
             }
 
@@ -190,7 +205,7 @@ const checkStatus = () => {
 
 const finalFunction = () => {
 
-    if(array.some((element) => element.style.backgroundColor === 'red')) {
+    if(array.some((element) => element.style.backgroundColor === 'red') || array.some((element) => element.style.backgroundColor === 'orange')) {
         console.log('wrong');
         indexOfGuesses++;
         tries++;
