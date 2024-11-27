@@ -6,7 +6,7 @@ const problems = [
     "5/1+2-3=4",
     "(4/2)+3-1",
     "4/x+5-3=2",
-    "2-3+5-4=2",
+    "2-3+5-4=2"
 ]
 
 const characters = [
@@ -22,8 +22,12 @@ let array = [];
 let tries = 1;
 let indexOfGuesses = 0;
 let guessIndex = 9;
+let duplicateInt = 0;
+
 
 const problem = problems[Math.floor(Math.random() * problems.length)];
+let problemArray = problem.split('');
+console.log(problemArray);
 console.log(problem);
 
 const div = document.querySelector('.characters');
@@ -56,46 +60,68 @@ const compare = (tries) => {
         case 1:
             for(let i = 0; i < problem.length; i++){
                 if(problem[i] !== guesses[i]){
-                    if(problem.includes(guesses[i])) {
-                        console.log('placement');
+                    if(problemArray.includes(guesses[i])) {
+                        const something = guesses[i];
+                        let matchingElement = 0;
+                        problemArray.some((element) => {if(element === something){matchingElement = problemArray.indexOf(element)}});
+                        /*if(problemArray.filter((element) => element === something).length == 2){
+
+                        }*/
+                        problemArray[matchingElement] = 'Q';
+                        console.log(problemArray + ' problemArray placement');
+                        console.log(problem + ' problem');
                         rightOrWrong[i] = 'placement';
-                        document.querySelectorAll('.guess')[i].style.backgroundColor = 'orange';
-                        console.log(rightOrWrong);
+                        console.log('placement');
+                        document.querySelectorAll('.guess')[i].classList.add('placement');
                     } else {
+                        rightOrWrong[i] = 'wrong';
+                        console.log('wrong');
+                        document.querySelectorAll('.guess')[i].classList.add('wrong');
+                    }
+                } else {
+                    /*const duplicate = guesses[i];
+                    problemArray.forEach((element) => {if(element === duplicate){duplicateInt++}});
+                    if(duplicateInt > 1 && problemArray.filter((element) => element === duplicate).length > 1) {
+                        console.log('duplicate ' + duplicateInt);
                         console.log('wrong');
                         rightOrWrong[i] = 'wrong';
-                        document.querySelectorAll('.guess')[i].style.backgroundColor = 'red';
-                        console.log(rightOrWrong);
-                    }
-                } if (problem[i] === guesses[i]) {
-                    console.log('correct');
-                    rightOrWrong[i] = 'correct';
-                    document.querySelectorAll('.guess')[i].style.backgroundColor = 'green';
-                    console.log(rightOrWrong);
+                        document.querySelectorAll('.guess')[i].classList.add('wrong');
+                    }*/ /*else {*/
+                        problemArray[i] = 'Q';
+                        console.log(problemArray + ' problemArray correct');
+                        console.log(problem + ' problem');
+                        console.log('correct');
+                        rightOrWrong[i] = 'correct';
+                        document.querySelectorAll('.guess')[i].classList.add('correct');
+                    /*}*/
                 }
             }
-
+            
             checkStatus();
         break;
 
         case 2:
             for(let i = 0; i < problem.length; i++){
                 if(problem[i] !== guesses[guessIndex]){
-                    if(problem.includes(guesses[guessIndex]) && document.querySelectorAll('.secondGuess')[i].style.backgroundColor !== 'green') {
-                        console.log('placement');
+                    if(problemArray.includes(guesses[guessIndex])) {
+                        /*const something = guesses[guessIndex - 9];
+                        console.log(something + ' something');
+                        let matchingElement = 0;
+                        problemArray.some((element) => {if(element === something){matchingElement = problemArray.indexOf(element)}});*/
+                        problemArray[matchingElement] = 'Q';
                         secondRigthOrWrong[i] = 'placement';
-                        document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'orange';
+                        document.querySelectorAll('.secondGuess')[i].classList.add('placement');
                         console.log(secondRigthOrWrong + ' case 2 if working');
                     } else {
                         console.log('wrong');
                         secondRigthOrWrong[i] = 'wrong';
-                        document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'red';
+                        document.querySelectorAll('.secondGuess')[i].classList.add('wrong');
                         console.log(secondRigthOrWrong);
                     } 
-                } if (problem[i] === guesses[guessIndex]) {
-                    console.log('correct');
+                } else {
+                    problemArray[i] = 'Q';
                     secondRigthOrWrong[i] = 'correct';
-                    document.querySelectorAll('.secondGuess')[i].style.backgroundColor = 'green';
+                    document.querySelectorAll('.secondGuess')[i].classList.add('correct');
                     console.log(secondRigthOrWrong);
                 } 
                 guessIndex++;
@@ -108,21 +134,24 @@ const compare = (tries) => {
         case 3:
             for(let i = 0; i < problem.length ; i++){
                 if(problem[i] !== guesses[guessIndex]){
-                    if(problem.includes(guesses[guessIndex]) && document.querySelectorAll('.thirdGuess')[i].style.backgroundColor !== 'green') {
-                        console.log('placement');
+                    if(problemArray.includes(guesses[guessIndex])) {
+                        /*const something = guesses[guessIndex - 18];
+                        let matchingElement = 0;
+                        problemArray.some((element) => {if(element === something){matchingElement = problemArray.indexOf(element)}});*/
+                        problemArray[matchingElement] = 'Q';
                         thirdRightOrWrong[i] = 'placement';
-                        document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'orange';
+                        document.querySelectorAll('.thirdGuess')[i].classList.add('placement');
                         console.log(thirdRightOrWrong);
                     } else {
                         console.log('wrong');
                         thirdRightOrWrong[i] = 'wrong';
-                        document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'red';
+                        document.querySelectorAll('.thirdGuess')[i].classList.add('wrong');
                         console.log(thirdRightOrWrong);
                     }
-                } if (problem[i] === guesses[guessIndex]) {
-                    console.log('correct');
+                } else {
+                    problemArray[i] = 'Q';
                     thirdRightOrWrong[i] = 'correct';
-                    document.querySelectorAll('.thirdGuess')[i].style.backgroundColor = 'green';
+                    document.querySelectorAll('.thirdGuess')[i].classList.add('correct');
                     console.log(thirdRightOrWrong);
                 } 
                 guessIndex++;
@@ -135,21 +164,24 @@ const compare = (tries) => {
         case 4:
             for(let i = 0; i < problem.length; i++){
                 if(problem[i] !== guesses[guessIndex]){
-                    if(problem.includes(guesses[guessIndex]) && document.querySelectorAll('.fourthGuess')[i].style.backgroundColor !== 'green') {
-                        console.log('placement');
+                    if(problem.includes(guesses[guessIndex - 27])) {
+                        /*const something = guesses[guessIndex];
+                        let matchingElement = 0;
+                        problemArray.some((element) => {if(element === something){matchingElement = problemArray.indexOf(element)}});*/
+                        problemArray[matchingElement] = 'Q';
                         fourthRightOrWrong[i] = 'placement';
-                        document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'orange';
+                        document.querySelectorAll('.fourthGuess')[i].classList.add('placement');
                         console.log(fourthRightOrWrong);
                     } else {
                         console.log('wrong');
                         fourthRightOrWrong[i] = 'wrong';
-                        document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'red';
+                        document.querySelectorAll('.fourthGuess')[i].classList.add('wrong');;
                         console.log(fourthRightOrWrong);
                     }
-                } if (problem[i] === guesses[guessIndex]) {
-                    console.log('correct');
+                } else {
+                    problemArray[i] = 'Q';
                     fourthRightOrWrong[i] = 'correct';
-                    document.querySelectorAll('.fourthGuess')[i].style.backgroundColor = 'green';
+                    document.querySelectorAll('.fourthGuess')[i].classList.add('correct');
                     console.log(fourthRightOrWrong);
                 } 
                 guessIndex++;
@@ -171,7 +203,6 @@ const checkStatus = () => {
                 array.push(div);
             }
             finalFunction();
-            array = [];
         break;
 
         case 2:
@@ -180,7 +211,6 @@ const checkStatus = () => {
                 array.push(div);
             }
             finalFunction();
-            array = [];
         break;
 
         case 3: 
@@ -189,7 +219,6 @@ const checkStatus = () => {
                 array.push(div);
             }
             finalFunction();
-            array = [];
         break;
 
         case 4:
@@ -198,14 +227,13 @@ const checkStatus = () => {
                 array.push(div);
             }
             finalFunction();
-            array = [];
         break;
     }
 }
 
 const finalFunction = () => {
 
-    if(array.some((element) => element.style.backgroundColor === 'red') || array.some((element) => element.style.backgroundColor === 'orange')) {
+    if(array.some((element) => element.classList.contains('wrong')) || array.some((element) => element.classList.contains('placement'))) {
         console.log('wrong');
         indexOfGuesses++;
         tries++;

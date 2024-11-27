@@ -58,3 +58,45 @@ button:hover{
 *{
     background-color: #2e2e2e;
 }
+
+.correct{
+    animation: Correct 1.2s;
+    background-color: #00bc00;
+}
+
+.placement{
+    animation: Placement 1.2s;
+    background-color: orange;
+}
+
+.wrong{
+    animation: Wrong 1.2s;
+    background-color: red;
+}
+
+@keyframes Correct {
+    0% {
+        background-color: #2e2e2e;
+    }
+    100% {
+        background-color: #00bc00;
+    }
+}
+
+@keyframes Placement {
+    0% {
+        background-color: #2e2e2e;
+    }
+    100% {
+        background-color: orange;
+    }
+}
+
+@keyframes Wrong {
+    0% {
+        background-color: #2e2e2e;
+    }
+    100% {
+        background-color: red;
+    }
+}
