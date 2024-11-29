@@ -1,102 +1,101 @@
-button {
-    width: 70px;
-    height: 70px;
-    cursor: pointer;
-    border-radius: 12px;
-    background-color: #1a1a1a;
-    color: white;
-    border-style: none;
-    transition: border 0.4s ease;
-    font-size: 24px;
-}
-
-button:hover{
-    border: 2px solid #646cff;
-}
-
-.guess,
-.secondGuess,
-.thirdGuess,
-.fourthGuess{
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
-    background-color: #3e3e3e;
-    color: white;
-    border-style: none;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-.characters{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding: 12px;
-}
-
-.guessesContainer{
-    padding: 24px;
-    padding-left: 25%;
-}
-
-.firstGuessContainer,
-.secondGuessContainer,
-.thirdGuessContainer,
-.fourthGuessContainer{
-    max-width: fit-content;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-
-}
-
 *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
     background-color: #2e2e2e;
 }
 
-.correct{
-    animation: Correct 1.2s;
-    background-color: #00bc00;
+button{
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    background-color: #1a1a1a;
+    color: white;
+    cursor: pointer;
 }
 
-.placement{
-    animation: Placement 1.2s;
-    background-color: orange;
+button{
+    border-style: none;
+}
+
+button:hover{
+    border: 1px solid #646cff;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+}
+
+#guessesContainer{
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(9, 70px);
+    align-self: center;
+    margin-bottom: 10%;
+    margin-top: 5%;
+}
+
+#guessesContainer div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    color: white;
+    background-color: #1a1a1a;
+}
+
+#characterContainer{
+    display: flex;
+    justify-content: space-around;
+    padding: 12px;
+}
+
+.correct{
+    animation: Correct 0.5s;
+    background-color: #00b400;
 }
 
 .wrong{
-    animation: Wrong 1.2s;
-    background-color: red;
+    animation: Wrong 0.5s;
+    background-color: #ff0000;
 }
 
-@keyframes Correct {
-    0% {
-        background-color: #2e2e2e;
-    }
-    100% {
-        background-color: #00bc00;
-    }
+.placement{
+    animation: Placement 0.5s;
+    background-color: #ffcc00;
 }
 
-@keyframes Placement {
-    0% {
-        background-color: #2e2e2e;
+@keyframes Correct{
+    0%{
+        background-color: #1a1a1a;
     }
-    100% {
-        background-color: orange;
+    100%{
+        background-color: #00b400;
     }
 }
 
-@keyframes Wrong {
-    0% {
-        background-color: #2e2e2e;
+@keyframes Wrong{
+    0%{
+        background-color: #1a1a1a;
     }
-    100% {
-        background-color: red;
+    100%{
+        background-color: #ff0000;
+    }
+}
+
+@keyframes Placement{
+    0%{
+        background-color: #1a1a1a;
+    }
+    100%{
+        background-color: #ffcc00;
     }
 }
