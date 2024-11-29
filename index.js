@@ -1,4 +1,4 @@
-//THE WHOLE THING SPAWN
+    //THE WHOLE THING SPAWN
 
 const problems = [
     "1+2*3-4/5",  
@@ -16,7 +16,6 @@ const characters = [
 ]   
 
 let array = [];
-let duplicates = [];
 
 const characterContainer = document.getElementById("characterContainer");
 const guessesContainer = document.getElementById("guessesContainer");
@@ -41,7 +40,18 @@ for(let i = 0; i < 45; i++){
 const currentProblem = problems[Math.floor(Math.random() * problems.length)]; // Randomly select a problem
 console.log(currentProblem);
 array = currentProblem.split(""); // Split the problem into an array of characters
-const problemDuplicates = currentProblem.split("").filter((item, index) => currentProblem.indexOf(item) != index); // Find duplicates in the problem
+
+let problemDuplicates = []; // Array to store the duplicates in the problem
+array.filter((item, index) => {
+    if(array.indexOf(item) != index) { // If the character is a duplicate
+        problemDuplicates.push(item); // Add it to the duplicates array
+    }
+});
+
+problemDuplicates.forEach((item) => {
+    problemDuplicates.push(item); // Add the duplicate to the array twice
+})
+
 console.log(problemDuplicates);
 
 let guesses = []; // Array to store the guesses
@@ -65,11 +75,19 @@ const compare = (numberOfGuesses) => {
         case 9:
             for(let i = 0; i < currentProblem.length; i++) {
                 if(array[i] !== guesses[i]) {  
-                    document.getElementsByClassName("guess")[i].style.backgroundColor = "red";
+                    if(problemDuplicates.includes(guesses[i]) || array.includes(guesses[i]) && document.getElementsByClassName("guess")[i].style.backgroundColor != "green") {
+                        document.getElementsByClassName("guess")[i].style.backgroundColor = "orange";
+                        problemDuplicates.splice(problemDuplicates.indexOf(guesses[i]), 1); // Remove the duplicate from the duplicates array
+                    } else {
+                        document.getElementsByClassName("guess")[i].style.backgroundColor = "red";
+                    }
                 } else {
                     document.getElementsByClassName("guess")[i].style.backgroundColor = "green";
                     array[i] = "Q"; // Change the character in the array to Q so it won't be compared again
                 }
             }
+        break;
+
+       
     }
 }
