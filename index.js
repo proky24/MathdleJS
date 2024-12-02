@@ -1,4 +1,4 @@
-    //THE WHOLE THING SPAWN
+//THE WHOLE THING SPAWN
 
 const problems = [
     "1+2*3-4/5",  
@@ -36,7 +36,6 @@ for(let i = 0; i < 45; i++){
 //THE WHOLE THING SPAWN
 
 //THE GAME
-
 const currentProblem = problems[Math.floor(Math.random() * problems.length)]; // Randomly select a problem
 console.log(currentProblem);
 array = currentProblem.split(""); // Split the problem into an array of characters
@@ -52,7 +51,7 @@ problemDuplicates.forEach((item) => {
     problemDuplicates.push(item); // Add the duplicate to the array twice
 })
 
-console.log(problemDuplicates);
+console.log(problemDuplicates + " duplicates");
 
 let guesses = []; // Array to store the guesses
 let numberOfGuesses = 0; // Number of guesses made
