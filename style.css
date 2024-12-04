@@ -24,19 +24,25 @@ button:hover{
     border: 1px solid #646cff;
 }
 
+img{
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+}
+
 #container{
     display: flex;
     flex-direction: column;
-    gap: 10px;
     padding: 12px;
 }
 
 #guessesContainer{
+    scale: 0.8;
     display: grid;
     gap: 12px;
     grid-template-columns: repeat(9, 70px);
     align-self: center;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     margin-top: 5%;
 }
 
@@ -49,6 +55,19 @@ button:hover{
     height: 70px;
     border-radius: 12px;
     color: white;
+}
+
+#header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 26px;
+    color: #646cff;
+    font-family: "Edu AU VIC WA NT Arrows";
+    border-bottom: 1px solid #646cff;
+}
+
+.guess{
     background-color: #1a1a1a;
 }
 
@@ -56,21 +75,23 @@ button:hover{
     display: flex;
     justify-content: space-around;
     padding: 12px;
+    scale: 0.8;
 }
 
+
 .correct{
-    animation: Correct 0.5s;
-    background-color: #00b400;
+    animation: Correct 1.2;
+    background-color: green;
 }
 
 .wrong{
-    animation: Wrong 0.5s;
-    background-color: #ff0000;
+    animation: Wrong 1.2;
+    background-color: red;
 }
 
 .placement{
-    animation: Placement 0.5s;
-    background-color: #ffcc00;
+    animation: Placement 1.2;
+    background-color: orange;
 }
 
 @keyframes Correct{
@@ -78,7 +99,7 @@ button:hover{
         background-color: #1a1a1a;
     }
     100%{
-        background-color: #00b400;
+        background-color: green;
     }
 }
 
@@ -87,7 +108,7 @@ button:hover{
         background-color: #1a1a1a;
     }
     100%{
-        background-color: #ff0000;
+        background-color: red;
     }
 }
 
@@ -96,6 +117,6 @@ button:hover{
         background-color: #1a1a1a;
     }
     100%{
-        background-color: #ffcc00;
+        background-color: orange;
     }
 }
